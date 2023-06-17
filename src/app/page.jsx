@@ -19,9 +19,7 @@ const page = ({ todos_data }) => {
       setTodos(todos_data);
     };
 
-    if (!todos) {
-      getTodos();
-    }
+    getTodos();
   }, []);
 
   const deleteTodo = (e, id) => {
@@ -164,13 +162,3 @@ const page = ({ todos_data }) => {
 };
 
 export default page;
-
-export const getStaticProps = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/todos`);
-  const todos_data = await response.json();
-  return {
-    props: {
-      todos_data,
-    },
-  };
-};
