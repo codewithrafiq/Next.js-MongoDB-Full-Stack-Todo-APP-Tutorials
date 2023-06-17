@@ -14,7 +14,6 @@ export async function POST(req) {
         const collection = await db.collection("todos");
         let todo = await collection.findOne({ _id: new ObjectId(id) })
 
-        // console.log("todo--todo-->", todo);
         if (!todo) {
             throw new Error("Todo not found");
         }

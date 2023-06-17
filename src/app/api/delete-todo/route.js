@@ -8,13 +8,11 @@ import { NextResponse } from "next/server";
 export async function POST(req) {
     try {
         const { id } = await req.json();
-        // console.log("id--id-->", id);
         const client = await clientPromise;
         const db = client.db("todoDB");
         const collection = await db.collection("todos");
         let todo = await collection.findOne({ _id: new ObjectId(id) })
 
-        // console.log("todo--todo-->", todo);
         if (!todo) {
             throw new Error("Todo not found");
         }
